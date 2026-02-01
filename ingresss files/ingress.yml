@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ms-demo-ingress
+  namespace: sample-app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /ms1
+        pathType: Prefix
+        backend:
+          service:
+            name: ms1-service
+            port:
+              number: 80
+      - path: /ms2
+        pathType: Prefix
+        backend:
+          service:
+            name: ms2-service
+            port:
+              number: 80

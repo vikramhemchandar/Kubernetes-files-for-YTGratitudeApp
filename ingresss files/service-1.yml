@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service 
+metadata:
+  name: ms1-service
+  namespace: sample-app-ingress
+  labels:
+    app: ms1 
+spec:
+  type: ClusterIP
+  selector:
+    app: ms1
+  ports:
+    - name: http
+      port: 80
+      targetPort: 5678
